@@ -22,7 +22,13 @@ function App() {
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
   }
-  
+
+  function closeAllPopups() {
+    setEditProfilePopupOpen(false)
+    setAddPlacePopupOpen(false)
+    setEditAvatarPopupOpen(false)
+  }
+
   return (
     <div className="page">
       <Header />
@@ -37,7 +43,7 @@ function App() {
         title="Редактировать профиль"
         btnText="Сохранить"
         isOpen={isEditProfilePopupOpen}
-        // onClose={ }
+        onClose={closeAllPopups}
         >
         <input
           className="popup__input popup__input_user_name"
@@ -69,7 +75,7 @@ function App() {
         title="Новое место"
         btnText="Создать"
         isOpen={isAddPlacePopupOpen}
-        // onClose={ }
+        onClose={closeAllPopups}
         >
           <input
               className="popup__input popup__input_new-card_name"
@@ -99,7 +105,7 @@ function App() {
         title="Обновить аватар"
         btnText="Сохранить"
         isOpen={isEditAvatarPopupOpen}
-        // onClose={ }
+        onClose={closeAllPopups}
         >
           <input
               className="popup__input popup__input_update-user-img_link"

@@ -1,8 +1,31 @@
 import React from 'react'
-import defaultUserImage from '../images/Custo.jpg'
+import api from '../utils/Api'
+
 
 
 function Main(props) {
+
+  const [userName, setUserName] = React.useState('')
+  const [userDescription, setUserDescription] = React.useState('')
+  const [userAvatar, setUserAvatar] = React.useState('')
+  const [cards, setCards] = React.useState([])
+
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then((res) => {
+        setUserName(res.name)
+        setUserDescription(res.about)
+        setUserAvatar(res.avatar)
+      })
+      .catch(err => console.log(err)) 
+  }, [])
+
+  React.useEffect(() => {
+    api.getInitialCards()
+      .then(res => setCards(res))
+      .catch(err => console.log(err))
+  })
+
   return (
     <main className="main">
       <section className="profile">
@@ -10,20 +33,20 @@ function Main(props) {
           <div className="profile__user">
             <div className="profile__avatar-container">
               <img
-                src={defaultUserImage}
+                src={userAvatar}
                 alt="Аватар пользователя"
                 className="profile__avatar"
                 onClick={props.onEditAvatar}
               />
             </div>
             <div className="profile__info">
-              <h1 className="profile__user-name">Жак-Ив Кусто</h1>
+              <h1 className="profile__user-name">{userName}</h1>
               <button 
                 type="button" 
                 className="profile__edit-btn"
                 onClick={props.onEditProfile}
               />
-              <p className="profile__profession">Исследователь океана</p>
+              <p className="profile__profession">{userDescription}</p>
             </div>
           </div>
           <button 
@@ -34,7 +57,9 @@ function Main(props) {
         </div>
       </section>
       <section className="cards">
-        <ul className="cards__list"></ul>
+        <ul className="cards__list">
+          
+        </ul>
       </section>
     </main>
   )

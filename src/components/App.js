@@ -10,6 +10,14 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
+  const [isImagePopupOpen, setImagePopupOpen] = React.useState(false)
+  const [selectedCard, setSelectedCard] = React.useState({})
+
+  function handleCardClick(card) {
+    setSelectedCard(card)
+    setImagePopupOpen(true)
+  }
+
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true)
@@ -27,6 +35,8 @@ function App() {
     setEditProfilePopupOpen(false)
     setAddPlacePopupOpen(false)
     setEditAvatarPopupOpen(false)
+    setImagePopupOpen(false)
+    setSelectedCard({})
   }
 
   return (
@@ -36,6 +46,7 @@ function App() {
         onEditAvatar={handleEditAvatarClick}
         onAddPlace={handleAddPlaceClick}
         onEditProfile={handleEditProfileClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
       <PopupWithForm
@@ -123,20 +134,14 @@ function App() {
         title="Вы уверены?"
         btnText="Да"
         />
-      <ImagePopup />
+      <ImagePopup
+        card={selectedCard}
+        isOpen={isImagePopupOpen}
+        onClose={closeAllPopups}
+      />
 
       <template id="card-item">
-        <li className="cards__item">
-          <button className="card__item-trash-btn"></button>
-          <img src="#" alt="" className="cards__item-img" />
-          <div className="cards__item-description">
-            <h2 className="cards__item-title"></h2>
-            <div className="cards__item-like">
-              <button type="button" className="cards__item-btn"></button>
-              <span className="cards__item-like-count">1</span>
-            </div>
-          </div>
-        </li>
+        
       </template>
     </div>
   );

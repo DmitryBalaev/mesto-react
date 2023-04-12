@@ -1,7 +1,6 @@
 import React from 'react'
 import api from '../utils/Api'
-
-
+import Card from './Card'
 
 function Main(props) {
 
@@ -22,9 +21,11 @@ function Main(props) {
 
   React.useEffect(() => {
     api.getInitialCards()
-      .then(res => setCards(res))
+      .then((res) => {
+        setCards(res)
+      })
       .catch(err => console.log(err))
-  })
+  }, [])
 
   return (
     <main className="main">
@@ -58,7 +59,11 @@ function Main(props) {
       </section>
       <section className="cards">
         <ul className="cards__list">
-          
+          {
+            cards.map((card) => (
+              <Card card={card} key={card._id } onCardClick={props.onCardClick}/>
+            ))
+          }
         </ul>
       </section>
     </main>

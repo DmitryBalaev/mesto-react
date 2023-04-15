@@ -76,5 +76,5 @@ class Api {
 	}
 
 }
-const api = new Api(apiObj)
-export default api
+
+export const api = new Api(apiObj)

@@ -3,7 +3,6 @@ import api from '../utils/Api'
 import Card from './Card'
 
 function Main(props) {
-
   const [userName, setUserName] = React.useState('')
   const [userDescription, setUserDescription] = React.useState('')
   const [userAvatar, setUserAvatar] = React.useState('')
@@ -16,7 +15,7 @@ function Main(props) {
         setUserDescription(res.about)
         setUserAvatar(res.avatar)
       })
-      .catch(err => console.log(err)) 
+      .catch(err => console.log(err))
   }, [])
 
   React.useEffect(() => {
@@ -42,16 +41,16 @@ function Main(props) {
             </div>
             <div className="profile__info">
               <h1 className="profile__user-name">{userName}</h1>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="profile__edit-btn"
                 onClick={props.onEditProfile}
               />
               <p className="profile__profession">{userDescription}</p>
             </div>
           </div>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="profile__add-btn"
             onClick={props.onAddPlace}
           />
@@ -61,7 +60,7 @@ function Main(props) {
         <ul className="cards__list">
           {
             cards.map((card) => (
-              <Card card={card} key={card._id } onCardClick={props.onCardClick}/>
+              <Card card={card} key={card._id} onCardClick={props.onCardClick} />
             ))
           }
         </ul>

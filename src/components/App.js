@@ -5,7 +5,6 @@ import Footer from './Footer'
 import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup'
 
-
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
@@ -17,7 +16,6 @@ function App() {
     setSelectedCard(card)
     setImagePopupOpen(true)
   }
-
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true)
@@ -40,9 +38,9 @@ function App() {
   }
 
   return (
-    <div className="page">
+    <div className='page'>
       <Header />
-      <Main 
+      <Main
         onEditAvatar={handleEditAvatarClick}
         onAddPlace={handleAddPlaceClick}
         onEditProfile={handleEditProfileClick}
@@ -55,7 +53,7 @@ function App() {
         btnText="Сохранить"
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
-        >
+      >
         <input
           className="popup__input popup__input_user_name"
           name="name"
@@ -87,29 +85,29 @@ function App() {
         btnText="Создать"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
-        >
-          <input
-              className="popup__input popup__input_new-card_name"
-              name="name"
-              type="text"
-              defaultValue=""
-              placeholder="Название"
-              required=""
-              minLength={2}
-              maxLength={30}
-              id="card-name-input"
-            />
-            <span className="popup__input-error" id="card-name-input-error" />
-            <input
-              className="popup__input popup__input_new-card_link"
-              name="link"
-              defaultValue=""
-              placeholder="Ссылка на картинку"
-              required=""
-              type="url"
-              id="card-link-input"
-            />
-            <span className="popup__input-error" id="card-link-input-error" />
+      >
+        <input
+          className="popup__input popup__input_new-card_name"
+          name="name"
+          type="text"
+          defaultValue=""
+          placeholder="Название"
+          required=""
+          minLength={2}
+          maxLength={30}
+          id="card-name-input"
+        />
+        <span className="popup__input-error" id="card-name-input-error" />
+        <input
+          className="popup__input popup__input_new-card_link"
+          name="link"
+          defaultValue=""
+          placeholder="Ссылка на картинку"
+          required=""
+          type="url"
+          id="card-link-input"
+        />
+        <span className="popup__input-error" id="card-link-input-error" />
       </PopupWithForm>
       <PopupWithForm
         name="update"
@@ -117,32 +115,28 @@ function App() {
         btnText="Сохранить"
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
-        >
-          <input
-              className="popup__input popup__input_update-user-img_link"
-              name="avatar"
-              defaultValue=""
-              placeholder="Ссылка на аватар"
-              required=""
-              type="url"
-              id="user-img-link-input"
-            />
-            <span className="popup__input-error" id="user-img-link-input-error" />
+      >
+        <input
+          className="popup__input popup__input_update-user-img_link"
+          name="avatar"
+          defaultValue=""
+          placeholder="Ссылка на аватар"
+          required=""
+          type="url"
+          id="user-img-link-input"
+        />
+        <span className="popup__input-error" id="user-img-link-input-error" />
       </PopupWithForm>
       <PopupWithForm
         name="confirm"
         title="Вы уверены?"
         btnText="Да"
-        />
+      />
       <ImagePopup
         card={selectedCard}
         isOpen={isImagePopupOpen}
         onClose={closeAllPopups}
       />
-
-      <template id="card-item">
-        
-      </template>
     </div>
   );
 }

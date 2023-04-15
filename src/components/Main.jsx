@@ -2,7 +2,7 @@ import React from 'react'
 import {api} from '../utils/api.js'
 import Card from './Card'
 
-function Main(props) {
+function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
   const [userName, setUserName] = React.useState('')
   const [userDescription, setUserDescription] = React.useState('')
   const [userAvatar, setUserAvatar] = React.useState('')
@@ -36,7 +36,7 @@ function Main(props) {
                 src={userAvatar}
                 alt="Аватар пользователя"
                 className="profile__avatar"
-                onClick={props.onEditAvatar}
+                onClick={onEditAvatar}
               />
             </div>
             <div className="profile__info">
@@ -44,7 +44,7 @@ function Main(props) {
               <button
                 type="button"
                 className="profile__edit-btn"
-                onClick={props.onEditProfile}
+                onClick={onEditProfile}
               />
               <p className="profile__profession">{userDescription}</p>
             </div>
@@ -52,7 +52,7 @@ function Main(props) {
           <button
             type="button"
             className="profile__add-btn"
-            onClick={props.onAddPlace}
+            onClick={onAddPlace}
           />
         </div>
       </section>
@@ -60,7 +60,7 @@ function Main(props) {
         <ul className="cards__list">
           {
             cards.map((card) => (
-              <Card card={card} key={card._id} onCardClick={props.onCardClick} />
+              <Card card={card} key={card._id} onCardClick={onCardClick} />
             ))
           }
         </ul>

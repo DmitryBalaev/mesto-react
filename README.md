@@ -14,4 +14,4 @@
 
 **GH-Pages**
 
-* [Ссылка на страницу в GHpages](https://dmitrybalaev.github.io/mesto/)
+* [Ссылка на проект на Vanilla JS в GHpages](https://dmitrybalaev.github.io/mesto/)

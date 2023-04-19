@@ -6,7 +6,7 @@ function PopupWithForm({name, isOpen, title, btnText, onClose, children}) {
 
   return (
     <div className={className}>
-      <div className="popup__overlay" />
+      <div className="popup__overlay" onClick={onClose}/>
       <div className="popup__container">
         <h2 className="popup__title">{title}</h2>
         <form

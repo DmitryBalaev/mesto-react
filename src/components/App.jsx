@@ -34,7 +34,10 @@ function App() {
     setAddPlacePopupOpen(false)
     setEditAvatarPopupOpen(false)
     setImagePopupOpen(false)
-    setSelectedCard({})
+    setTimeout(() => {
+      setSelectedCard({})
+      console.log('clear')
+    }, 300) 
   }
 
   return (

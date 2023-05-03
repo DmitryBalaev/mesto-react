@@ -12,8 +12,12 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddPlace(value);
-    setValue({ [evt.target.name]: '' });
   }
+
+  React.useEffect(() => {
+    setValue({})
+  }, [isOpen])
+
 
   return (
     <PopupWithForm

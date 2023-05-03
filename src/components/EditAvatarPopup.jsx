@@ -11,7 +11,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
   React.useEffect(() => {
     isOpen &&
-      (inputRef.current.value = currentUser.avatar)
+      (inputRef.current.value = '')
   }, [currentUser, isOpen]);
 
   function handleSubmit(evt) {
